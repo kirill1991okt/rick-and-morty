@@ -1,0 +1,65 @@
+* {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li,
+dl {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.App {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 0;
+  position: relative;
+
+  &__control {
+    padding-left: 40px;
+    margin-left: 60px;
+  }
+}
+
+.top {
+  position: fixed;
+  top: 15px;
+  right: 25px;
+  padding: 5px;
+  background: transparent;
+  border: 2px solid transparent;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #9c27b0;
+  color: #fff;
+  box-shadow: 0 4px 0 darken(#9c27b0, 10%);
+  border: 1px solid darken(#9c27b0, 15%);
+  font-size: 1rem;
+  color: #000;
+
+  &:hover {
+    background-color: #892be2a2;
+  }
+
+  &:active {
+    transform: translateY(5px);
+    box-shadow: none;
+  }
+}
