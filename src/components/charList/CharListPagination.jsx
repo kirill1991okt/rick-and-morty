@@ -12,7 +12,8 @@ const CharList = ({ state }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [charId, setCharId] = useState(null);
   const [pages, setPages] = useState(1);
-  const { loading, error, getAllCharacters } = useRickService();
+  const [max, setMax] = useState(null);
+  const { loading, error, getAllCharacters, getMaxPages } = useRickService();
 
   const onOpenModal = (id) => {
     document.body.style.overflow = 'hidden';
@@ -25,6 +26,12 @@ const CharList = ({ state }) => {
   };
 
   const onRequest = useOnRequest({ state, pages, setChar, getAllCharacters });
+
+  useEffect(() => {
+    getMaxPages().then((pages) => {
+      setMax(pages);
+    });
+  }, []);
 
   useEffect(() => {
     onRequest();
@@ -55,7 +62,7 @@ const CharList = ({ state }) => {
         {errorMessage}
         <div className='pagination'>
           <Pagination
-            count={42}
+            count={max}
             color='secondary'
             hidePrevButton
             hideNextButton

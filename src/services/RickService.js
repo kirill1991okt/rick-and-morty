@@ -5,6 +5,12 @@ const useRickService = () => {
 
   const _apiBase = `https://rickandmortyapi.com/api/character`;
 
+  const getMaxPages = async () => {
+    const res = await request(_apiBase);
+
+    return res.info.pages;
+  };
+
   const getAllCharacters = async (pages) => {
     const res = await request(`${_apiBase}?page=${pages}`);
 
@@ -33,6 +39,7 @@ const useRickService = () => {
   return {
     getAllCharacters,
     getCharacter,
+    getMaxPages,
     loading,
     error,
   };
