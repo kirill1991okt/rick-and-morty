@@ -17,16 +17,16 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <FormControlLabel
-        className="App__control"
+        className='App__control'
         control={
-          <Switch checked={state} onChange={handleChange} color="secondary" />
+          <Switch checked={state} onChange={handleChange} color='secondary' />
         }
-        label="Switch scroll"
+        label='Turn off scroll'
       />
       {state ? <CharListPagination /> : <CharListScroll />}
-      <button className="top" onClick={handlerScrollToTop}>
+      <button className='top' onClick={handlerScrollToTop}>
         To top
       </button>
     </div>

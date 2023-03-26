@@ -21,6 +21,29 @@
     border-radius: 3%;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    animation: pagination 0.3s ease-in-out;
+
+    &-enter {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 300ms, transform 300ms;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 300ms, transform 300ms;
+    }
 
     &:hover {
       transform: scale(1.05);
@@ -45,4 +68,16 @@
   display: flex;
   justify-content: center;
   padding: 30px 0;
+}
+
+@keyframes pagination {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

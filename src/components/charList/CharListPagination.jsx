@@ -37,14 +37,14 @@ const CharList = () => {
   const charItems = (dataChar) => {
     const elements = dataChar.map(({ id, name, image }, i) => {
       return (
-        <li key={i} className="char__item" onClick={() => onOpenModal(id)}>
-          <img className="char__item-img" src={image} alt={name} />
-          <div className="char__item-name">{name}</div>
+        <li className='char__item' onClick={() => onOpenModal(id)}>
+          <img className='char__item-img' src={image} alt={name} />
+          <div className='char__item-name'>{name}</div>
         </li>
       );
     });
 
-    return <ul className="char__items">{elements}</ul>;
+    return <ul className='char__items'>{elements}</ul>;
   };
 
   const spinner = loading ? <Spinner /> : null;
@@ -53,17 +53,17 @@ const CharList = () => {
 
   return (
     <>
-      <div className="char">
+      <div className='char'>
         {content}
         {spinner}
         {errorMessage}
-        <div className="pagination">
+        <div className='pagination'>
           <Pagination
             count={42}
-            color="secondary"
+            color='secondary'
             hidePrevButton
             hideNextButton
-            size="large"
+            size='large'
             onChange={handleClick}
           />
         </div>
