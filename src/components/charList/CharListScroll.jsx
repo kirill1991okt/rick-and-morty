@@ -13,7 +13,7 @@ const CharListScroll = () => {
   const [pages, setPages] = useState(1);
   const { loading, error, getAllCharacters } = useRickService();
 
-  const { ref, entry } = useInView({
+  const { ref } = useInView({
     threshold: 1,
     onChange: (inView) => {
       if (inView) {

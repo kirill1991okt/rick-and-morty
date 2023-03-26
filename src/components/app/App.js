@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Switch, FormControlLabel, Button } from '@mui/material';
+import { Switch, FormControlLabel } from '@mui/material';
 import CharListScroll from '../charList/CharListScroll';
 import CharListPagination from '../charList/CharListPagination';
 

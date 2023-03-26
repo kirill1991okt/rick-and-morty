@@ -32,8 +32,11 @@ const Modal = ({ id, isOpen }) => {
 
   return ReactDOM.createPortal(
     <>
-      <div onClick={() => isOpen(false)} className="modal">
-        <div className="modal__container">
+      <div onClick={() => isOpen(false)} className='modal'>
+        <div className='modal__container'>
+          {error ? (
+            <h2 style={{ backgroundColor: '#fff' }}>Someting wrong...</h2>
+          ) : null}
           {charId ? <View char={charId} /> : null}
           {loading ? <Spinner /> : null}
         </div>
@@ -50,15 +53,15 @@ const View = ({ char, loading }) => {
   };
   return (
     <>
-      <img src={char.image} alt={char.name} className="modal__img" />
-      <div className="modal__descr">
+      <img src={char.image} alt={char.name} className='modal__img' />
+      <div className='modal__descr'>
         {arr
           .filter((item) => item[0] !== 'id' && item[0] !== 'image')
           .map((item, i) => {
             return (
               <React.Fragment key={i}>
-                <div className="modal__descr-items">
-                  <span className="modal__descr-item">
+                <div className='modal__descr-items'>
+                  <span className='modal__descr-item'>
                     {firstLetterToUpperCase(item[0])}:
                   </span>
                   <div>{item[1]}</div>
