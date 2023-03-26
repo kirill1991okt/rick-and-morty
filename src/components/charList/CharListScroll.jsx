@@ -4,9 +4,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Spinner from '../spinner/Spinner';
 import Modal from '../modal/Modal';
 import useRickService from '../../services/RickService';
+import { useOnRequest } from '../../hooks/useOnRequest';
 
 import './charList.scss';
-const CharListScroll = () => {
+const CharListScroll = ({ state }) => {
   const [char, setChar] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [charId, setCharId] = useState(null);
@@ -28,13 +29,7 @@ const CharListScroll = () => {
     setCharId(id);
   };
 
-  const onRequest = () => {
-    getAllCharacters(pages).then(onAllCharLoaded);
-  };
-
-  const onAllCharLoaded = (dataChar) => {
-    setChar((char) => [...char, ...dataChar]);
-  };
+  const onRequest = useOnRequest({ state, pages, setChar, getAllCharacters });
 
   useEffect(() => {
     onRequest();
@@ -83,8 +78,8 @@ const CharListScroll = () => {
         {errorMessage}
         {listChar}
         {spinner}
-        {isOpen && <Modal id={charId} isOpen={setIsOpen} />}
       </div>
+      {isOpen && <Modal id={charId} isOpen={setIsOpen} />}
     </>
   );
 };

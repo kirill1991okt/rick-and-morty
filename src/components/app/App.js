@@ -25,7 +25,11 @@ function App() {
         }
         label='Turn off scroll'
       />
-      {state ? <CharListPagination /> : <CharListScroll />}
+      {state ? (
+        <CharListPagination state={state} />
+      ) : (
+        <CharListScroll state={state} />
+      )}
       <button className='top' onClick={handlerScrollToTop}>
         To top
       </button>

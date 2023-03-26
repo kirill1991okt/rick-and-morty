@@ -3,10 +3,11 @@ import Spinner from '../spinner/Spinner';
 import Modal from '../modal/Modal';
 import { Pagination } from '@mui/material';
 import useRickService from '../../services/RickService';
+import { useOnRequest } from '../../hooks/useOnRequest';
 
 import './charList.scss';
 
-const CharList = () => {
+const CharList = ({ state }) => {
   const [char, setChar] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [charId, setCharId] = useState(null);
@@ -14,6 +15,7 @@ const CharList = () => {
   const { loading, error, getAllCharacters } = useRickService();
 
   const onOpenModal = (id) => {
+    document.body.style.overflow = 'hidden';
     setIsOpen(true);
     setCharId(id);
   };
@@ -22,13 +24,7 @@ const CharList = () => {
     setPages(pages);
   };
 
-  const onRequest = () => {
-    getAllCharacters(pages).then(onAllCharLoaded);
-  };
-
-  const onAllCharLoaded = (dataChar) => {
-    setChar([...dataChar]);
-  };
+  const onRequest = useOnRequest({ state, pages, setChar, getAllCharacters });
 
   useEffect(() => {
     onRequest();
@@ -67,8 +63,8 @@ const CharList = () => {
             onChange={handleClick}
           />
         </div>
-        {isOpen && <Modal id={charId} isOpen={setIsOpen} />}
       </div>
+      {isOpen && <Modal id={charId} isOpen={setIsOpen} />}
     </>
   );
 };
