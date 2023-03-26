@@ -23,6 +23,7 @@ const CharListScroll = () => {
   });
 
   const onOpenModal = (id) => {
+    document.body.style.overflow = 'hidden';
     setIsOpen(true);
     setCharId(id);
   };

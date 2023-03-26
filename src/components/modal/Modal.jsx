@@ -11,6 +11,11 @@ const Modal = ({ id, isOpen }) => {
 
   const { loading, error, getCharacter } = useRickService();
 
+  const onCloseModal = () => {
+    isOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
   const onRequest = () => {
     if (!id) return;
     getCharacter(id).then(onCharLoaded);
@@ -32,7 +37,12 @@ const Modal = ({ id, isOpen }) => {
 
   return ReactDOM.createPortal(
     <>
-      <div onClick={() => isOpen(false)} className='modal'>
+      <div
+        onClick={(e) => {
+          e.target === e.currentTarget && onCloseModal();
+        }}
+        className='modal'
+      >
         <div className='modal__container'>
           {error ? (
             <h2 style={{ backgroundColor: '#fff' }}>Someting wrong...</h2>
